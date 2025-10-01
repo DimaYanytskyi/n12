@@ -12,7 +12,7 @@ struct TabBar: View {
     ]
     
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 4) {
             ForEach(0..<tabs.count, id: \.self) { index in
                 Button(action: {
                     selectedTab = index
@@ -20,18 +20,21 @@ struct TabBar: View {
                     VStack(spacing: 4) {
                         Image(tabs[index].icon)
                             .font(.title3)
-                            .foregroundColor(selectedTab == index ? Color.init(red: 39, green: 246, blue: 140) : Color.white)
+                            .foregroundColor(.white)
                         
                         Text(tabs[index].title)
                             .font(.system(size: 12, weight: .medium))
-                            .foregroundColor(selectedTab == index ? Color.init(red: 39, green: 246, blue: 140) : Color.white)
+                            .foregroundColor(.white)
                     }
                 }
+                .padding(.vertical, 10)
                 .frame(maxWidth: .infinity)
+                .background(selectedTab == index ? Color(red: 64, green: 181, blue: 1) : Color.clear)
+                .cornerRadius(8)
             }
         }
-        .padding(.vertical, 16)
-        .background(Color.purple.opacity(0.8))
+        .padding(16)
+        .background(Color(red: 35, green: 58, blue: 69, opacit: 1))
     }
 }
 

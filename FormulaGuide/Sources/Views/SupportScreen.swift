@@ -42,11 +42,14 @@ struct SupportScreen: View {
                         .frame(width: 36, height: 36)
                 }
             }
-            .padding(.top, 21)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 14)
+            .background(Color(red: 42, green: 59, blue: 76))
+            .padding(.horizontal, -24)
             
             ScrollView(showsIndicators: false) {
                 Text("Thank you for your inquiry. We will review it and respond to you shortly.")
-                    .foregroundStyle(.white.opacity(0.5))
+                    .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                     .font(.custom("Inter24pt-Regular", size: 16))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity)
@@ -56,7 +59,7 @@ struct SupportScreen: View {
                     if let selectedImage = selectedImage {
                         Image(uiImage: selectedImage)
                             .resizable()
-                            .frame(height: 100)
+                            .frame(height: 200)
                             .cornerRadius(12)
                     } else {
                         Image(.attachImag)
@@ -72,51 +75,48 @@ struct SupportScreen: View {
                 TextField("", text: $email, prompt:
                             Text("Email")
                     .font(.custom("Inter24pt-Regular", size: 16))
-                    .foregroundColor(.white)
+                    .foregroundColor(Color(red: 18, green: 18, blue: 31))
                 )
                 .font(.custom("Inter24pt-Regular", size: 16))
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
                 .padding(.vertical, 21)
                 .padding(.horizontal, 16)
-                .foregroundColor(.white)
-                .background(Color.init(red: 18, green: 18, blue: 31))
-                .cornerRadius(40)
+                .foregroundColor(Color(red: 18, green: 18, blue: 31))
+                .background(.white)
+                .cornerRadius(10)
                 
                 ZStack(alignment: .topLeading) {
                     TextEditor(text: $message)
                         .font(.custom("Inter24pt-Regular", size: 16))
-                        .foregroundColor(.white)
+                        .foregroundColor(Color(red: 18, green: 18, blue: 31))
                         .scrollContentBackground(.hidden)
                         .padding(12)
                     
                     if message.isEmpty {
                         Text("Message")
                             .font(.custom("Inter24pt-Regular", size: 16))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(red: 18, green: 18, blue: 31))
                             .padding(20)
                     }
                 }
-                .background(.black.opacity(0.1))
-                .frame(minHeight: 200)
+                .background(.white)
+                .frame(minHeight: 300)
                 .background(Color.init(red: 18, green: 18, blue: 31))
-                .cornerRadius(24)
+                .cornerRadius(10)
                 .padding(.vertical, 20)
                 
                 Button {
                     isAlert = true
                 } label: {
                     Text("Send Message")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.white)
                         .font(.custom("Inter24pt-ExtraBold", size: 20))
                         .frame(maxWidth: .infinity)
                 }
                 .padding(.vertical, 21)
-                .background(LinearGradient(colors: [
-                    Color.init(red: 95, green: 255, blue: 144),
-                    Color.init(red: 39, green: 246, blue: 140)
-                ], startPoint: .top, endPoint: .bottom))
-                .cornerRadius(90)
+                .background(Color(red: 0, green: 86, blue: 254))
+                .cornerRadius(14)
                 .alert("", isPresented: $isAlert) {
                     Button("OK", role: .cancel) {
                         
@@ -223,15 +223,11 @@ struct ImagePickerBottomSheet: View {
                     showImagePicker = true
                 }
                 .frame(maxWidth: .infinity)
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .font(.custom("Inter24pt-ExtraBold", size: 20))
-                .cornerRadius(40)
                 .padding(.vertical, 21)
-                .background(LinearGradient(colors: [
-                    Color.init(red: 95, green: 255, blue: 144),
-                    Color.init(red: 39, green: 246, blue: 140)
-                ], startPoint: .top, endPoint: .bottom))
-                .cornerRadius(90)
+                .background(Color(red: 0, green: 86, blue: 254))
+                .cornerRadius(14)
                 
                 Button("Camera") {
                     imageSource = .camera
@@ -241,19 +237,15 @@ struct ImagePickerBottomSheet: View {
                 .frame(maxWidth: .infinity)
                 .foregroundColor(.white)
                 .font(.custom("Inter24pt-ExtraBold", size: 20))
-                .cornerRadius(40)
                 .padding(.vertical, 21)
-                .background(LinearGradient(colors: [
-                    Color.init(red: 255, green: 92, blue: 0),
-                    Color.init(red: 255, green: 72, blue: 0)
-                ], startPoint: .top, endPoint: .bottom))
-                .cornerRadius(90)
+                .background(Color(red: 115, green: 184, blue: 0))
+                .cornerRadius(14)
             }
             .padding(.horizontal, 20)
             
             Spacer()
         }
         .frame(maxWidth: .infinity)
-        .background(Color.init(red: 114, green: 42, blue: 218))
+        .background(Color(red: 35, green: 58, blue: 69))
     }
 }

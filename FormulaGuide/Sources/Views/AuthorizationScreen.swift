@@ -39,10 +39,12 @@ struct AuthorizationScreen: View {
                 .font(.custom("Inter24pt-Bold", size: 24))
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
-                .padding(.top, 21)
+                .padding(.vertical, 20)
+                .background(Color(red: 42, green: 59, blue: 76))
+                .padding(.horizontal, -24)
             
                 Text("Create your account to receive feedback and notifications in the app")
-                    .foregroundStyle(.white.opacity(0.5))
+                    .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                     .font(.custom("Inter24pt-Regular", size: 16))
                     .multilineTextAlignment(.center)
                     .padding(.top, 20)
@@ -50,68 +52,68 @@ struct AuthorizationScreen: View {
                 TextField("", text: $name, prompt:
                             Text("Username")
                     .font(.custom("Inter24pt-Medium", size: 18))
-                    .foregroundColor(.white.opacity(0.2))
+                    .foregroundColor(Color(red: 37, green: 44, blue: 54, opacit: 0.4))
                 )
                 .font(.custom("Inter24pt-Medium", size: 18))
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
-                .foregroundColor(.white)
+                .foregroundColor(Color(red: 37, green: 44, blue: 54))
                 .padding(20)
                 .background(!name.isEmpty
-                            ? Color.init(red: 45, green: 44, blue: 89)
-                            : Color.init(red: 18, green: 18, blue: 18)
+                            ? .white
+                            : Color.init(red: 239, green: 239, blue: 239)
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 60)
-                        .stroke(!name.isEmpty ? Color.init(red: 151, green: 71, blue: 255) : .clear, lineWidth: 2)
-                        .shadow(color: !name.isEmpty ? Color.init(red: 151, green: 71, blue: 255) : .clear,
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(!name.isEmpty ? .black : .clear, lineWidth: 2)
+                        .shadow(color: !name.isEmpty ? Color.init(red: 0, green: 209, blue: 246) : .clear,
                                 radius: 4, x: 0, y: 0)
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.top, 20)
                 
                 TextField("", text: $email, prompt:
                     Text("Email")
                     .font(.custom("Inter24pt-Medium", size: 18))
-                    .foregroundColor(.white.opacity(0.2))
+                    .foregroundColor(Color(red: 37, green: 44, blue: 54, opacit: 0.4))
                 )
                 .font(.custom("Inter24pt-Medium", size: 18))
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
-                .foregroundColor(.white)
+                .foregroundColor(Color(red: 37, green: 44, blue: 54))
                 .padding(20)
                 .background(!email.isEmpty
-                            ? Color.init(red: 45, green: 44, blue: 89)
-                            : Color.init(red: 18, green: 18, blue: 18)
+                            ? .white
+                            : Color.init(red: 239, green: 239, blue: 239)
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 60)
-                        .stroke(!email.isEmpty ? Color.init(red: 151, green: 71, blue: 255) : .clear, lineWidth: 2)
-                        .shadow(color: !email.isEmpty ? Color.init(red: 151, green: 71, blue: 255) : .clear,
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(!email.isEmpty ? .black : .clear, lineWidth: 2)
+                        .shadow(color: !email.isEmpty ? Color.init(red: 0, green: 209, blue: 246) : .clear,
                                 radius: 4, x: 0, y: 0)
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.top, 20)
                 
                 SecureField("", text: $password, prompt:
                         Text("Password")
                     .font(.custom("Inter24pt-Medium", size: 18))
-                    .foregroundColor(.white.opacity(0.2))
+                    .foregroundColor(Color(red: 37, green: 44, blue: 54, opacit: 0.4))
                 )
                 .font(.custom("Inter24pt-Medium", size: 18))
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
-                .foregroundColor(.white)
+                .foregroundColor(Color(red: 37, green: 44, blue: 54))
                 .padding(20)
                 .background(!password.isEmpty
-                            ? Color.init(red: 45, green: 44, blue: 89)
-                            : Color.init(red: 18, green: 18, blue: 18)
+                            ? .white
+                            : Color.init(red: 239, green: 239, blue: 239)
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 60)
-                        .stroke(!password.isEmpty ? Color.init(red: 43, green: 247, blue: 139) : .clear, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(!password.isEmpty ? Color(red: 43, green: 247, blue: 139) : .clear, lineWidth: 2)
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.top, 20)
                 
                 
@@ -136,7 +138,7 @@ struct AuthorizationScreen: View {
                     Text("Create Account")
                         .foregroundStyle(email.isEmpty || name.isEmpty || password.isEmpty
                                          ? .white.opacity(0.5)
-                                         : .black
+                                         : .white
                         )
                         .font(.custom("Inter24pt-ExtraBold", size: 20))
                         .frame(maxWidth: .infinity)
@@ -144,9 +146,9 @@ struct AuthorizationScreen: View {
                 }
                 .background(email.isEmpty || name.isEmpty || password.isEmpty
                             ? Color.init(red: 93, green: 93, blue: 93, opacit: 1)
-                            : Color.init(red: 95, green: 255, blue: 144, opacit: 1)
+                            : Color.init(red: 0, green: 86, blue: 254, opacit: 1)
                 )
-                .cornerRadius(60)
+                .cornerRadius(14)
                 .padding(.top, 20)
                 
                 Button(action: {
@@ -155,11 +157,11 @@ struct AuthorizationScreen: View {
                     HStack(spacing: 4) {
                         Text("Already created an account?")
                         .font(.custom("Inter24pt-Regular", size: 15))
-                        .foregroundColor(.white)
+                        .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                         
                         Text("Log in")
                         .font(.custom("Inter24pt-ExtraBold", size: 15))
-                        .foregroundColor(Color.init(red: 255, green: 255, blue: 102))
+                        .foregroundColor(Color.init(red: 114, green: 185, blue: 1))
                     }
                 })
                 .padding(.top, 20)
@@ -172,15 +174,15 @@ struct AuthorizationScreen: View {
                     }
                 } label: {
                     Text("Stay as Guest")
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color(red: 42, green: 59, blue: 76))
                         .font(.custom("Inter24pt-ExtraBold", size: 20))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 20)
                 }
-                .background(.white.opacity(0.14))
-                .cornerRadius(40)
+                .background(Color(red: 42, green: 59, blue: 76, opacit: 0.1))
+                .cornerRadius(14)
         }
-        .padding(.horizontal, 21)
+        .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image(.baseBackground)
@@ -197,10 +199,12 @@ struct AuthorizationScreen: View {
                 .font(.custom("Inter24pt-Bold", size: 24))
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
-                .padding(.top, 21)
+                .padding(.vertical, 20)
+                .background(Color(red: 42, green: 59, blue: 76))
+                .padding(.horizontal, -24)
             
                 Text("Log in to the account you have already created by filling in the fields below")
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                 .font(.custom("Inter24pt-Regular", size: 16))
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
@@ -208,45 +212,45 @@ struct AuthorizationScreen: View {
                 TextField("", text: $email, prompt:
                             Text("Email")
                     .font(.custom("Inter24pt-Medium", size: 18))
-                    .foregroundColor(.white.opacity(0.2))
+                    .foregroundColor(Color(red: 37, green: 44, blue: 54, opacit: 0.4))
                 )
                 .font(.custom("Inter24pt-Medium", size: 18))
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
-                .foregroundColor(.white)
+                .foregroundColor(Color(red: 37, green: 44, blue: 54))
                 .padding(20)
                 .background(!email.isEmpty
-                            ? Color.init(red: 45, green: 44, blue: 89)
-                            : Color.init(red: 18, green: 18, blue: 18)
+                            ? .white
+                            : Color.init(red: 239, green: 239, blue: 239)
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 60)
-                        .stroke(!email.isEmpty ? Color.init(red: 151, green: 71, blue: 255) : .clear, lineWidth: 2)
-                        .shadow(color: !email.isEmpty ? Color.init(red: 151, green: 71, blue: 255) : .clear,
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(!email.isEmpty ? .black : .clear, lineWidth: 2)
+                        .shadow(color: !email.isEmpty ? Color.init(red: 0, green: 209, blue: 246) : .clear,
                                 radius: 4, x: 0, y: 0)
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.top, 20)
                 
                 SecureField("", text: $password, prompt:
                                 Text("Password")
                     .font(.custom("Inter24pt-Medium", size: 18))
-                    .foregroundColor(.white.opacity(0.2))
+                    .foregroundColor(Color(red: 37, green: 44, blue: 54, opacit: 0.4))
                 )
                 .font(.custom("Inter24pt-Medium", size: 18))
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
-                .foregroundColor(.white)
+                .foregroundColor(Color(red: 37, green: 44, blue: 54))
                 .padding(20)
                 .background(!password.isEmpty
-                            ? Color.init(red: 45, green: 44, blue: 89)
-                            : Color.init(red: 18, green: 18, blue: 18)
+                            ? .white
+                            : Color.init(red: 239, green: 239, blue: 239)
                 )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 60)
-                        .stroke(!password.isEmpty ? Color.init(red: 43, green: 247, blue: 139) : .clear, lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(!password.isEmpty ? Color(red: 43, green: 247, blue: 139) : .clear, lineWidth: 2)
                 )
-                .clipShape(RoundedRectangle(cornerRadius: 60))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.top, 20)
                 
                 Button {
@@ -266,7 +270,7 @@ struct AuthorizationScreen: View {
                     Text("Log In")
                         .foregroundStyle(email.isEmpty || password.isEmpty
                                          ? .white.opacity(0.5)
-                                         : .black
+                                         : .white
                         )
                         .font(.custom("Inter24pt-ExtraBold", size: 20))
                         .frame(maxWidth: .infinity)
@@ -274,9 +278,9 @@ struct AuthorizationScreen: View {
                 }
                 .background(email.isEmpty || password.isEmpty
                             ? Color.init(red: 93, green: 93, blue: 93, opacit: 1)
-                            : Color.init(red: 95, green: 255, blue: 144, opacit: 1)
+                            : Color.init(red: 0, green: 86, blue: 254, opacit: 1)
                 )
-                .cornerRadius(60)
+                .cornerRadius(14)
                 .padding(.top, 20)
                 
                 Button(action: {
@@ -285,11 +289,11 @@ struct AuthorizationScreen: View {
                     HStack(spacing: 4) {
                         Text("Still don't have an account?")
                             .font(.custom("Inter24pt-Regular", size: 15))
-                            .foregroundColor(.white)
+                            .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                         
                             Text("Create one")
                             .font(.custom("Inter24pt-ExtraBold", size: 15))
-                            .foregroundColor(Color.init(red: 255, green: 255, blue: 102))
+                            .foregroundColor(Color(red: 114, green: 185, blue: 1))
                     }
                 })
                 .padding(.top, 20)
@@ -302,15 +306,15 @@ struct AuthorizationScreen: View {
                     }
                 } label: {
                     Text("Stay as Guest")
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color(red: 42, green: 59, blue: 76))
                         .font(.custom("Inter24pt-ExtraBold", size: 20))
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 20)
                 }
-                .background(.white.opacity(0.14))
-                .cornerRadius(40)
+                .background(Color(red: 42, green: 59, blue: 76, opacit: 0.1))
+                .cornerRadius(14)
         }
-        .padding(.horizontal, 21)
+        .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             Image(.baseBackground)

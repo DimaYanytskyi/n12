@@ -21,112 +21,115 @@ struct ChooseAvatarsScreen: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                Text("Choose Avatars")
-                    .font(Font.custom("Inter24pt-Bold", size: 24))
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(.white)
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.top, 21)
+            Text("Choose Avatars")
+                .font(.custom("Inter24pt-Bold", size: 24))
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.center)
+                .padding(.vertical, 20)
+                .background(Color(red: 42, green: 59, blue: 76))
+                .padding(.horizontal, -24)
             
             Text("Select your avatar, which you will use in the application.")
-                .font(Font.custom("Inter24pt-Regular", size: 16))
-                .foregroundStyle(.white.opacity(0.5))
+                .font(.custom("Inter24pt-Regular", size: 16))
+                .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
             
             Spacer()
             
-            ScrollViewReader { proxy in
-                ZStack {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 2) {
-                            ForEach(0..<avatars.count, id: \.self) { index in
-                                Image(avatars[index].name)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 200, height: 200)
-                                    .id(index)
-                                    .scaleEffect(selectedAvatarIndex == index ? 1.0 : 0.8)
-                                    .opacity(selectedAvatarIndex == index ? 1.0 : 0.6)
-                                    .animation(.easeInOut(duration: 0.3), value: selectedAvatarIndex)
+            VStack {
+                ScrollViewReader { proxy in
+                    ZStack {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 2) {
+                                ForEach(0..<avatars.count, id: \.self) { index in
+                                    Image(avatars[index].name)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 200, height: 200)
+                                        .id(index)
+                                        .scaleEffect(selectedAvatarIndex == index ? 1.0 : 0.8)
+                                        .opacity(selectedAvatarIndex == index ? 1.0 : 0.6)
+                                        .animation(.easeInOut(duration: 0.3), value: selectedAvatarIndex)
+                                }
+                            }
+                            .padding(.horizontal, 100)
+                        }
+                        .onChange(of: selectedAvatarIndex) { newValue in
+                            withAnimation(.easeInOut(duration: 0.5)) {
+                                proxy.scrollTo(newValue, anchor: .center)
+                            }
+                            authManager.saveSelectedAvatar(newValue)
+                        }
+                        .onAppear {
+                            selectedAvatarIndex = authManager.selectedAvatarIndex
+                        }
+                        
+                        Image(.subtract)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 320, height: 320)
+                    }
+                }
+                .padding(.top, 40)
+                .padding(.horizontal, -24)
+                
+                HStack {
+                    Button {
+                        if selectedAvatarIndex > 0 {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                selectedAvatarIndex -= 1
                             }
                         }
-                        .padding(.horizontal, 100)
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .font(.system(size: 18, weight: .medium))
+                            .foregroundColor(.white)
+                            .frame(width: 30, height: 30)
+                            .background(Color(red: 116, green: 182, blue: 3))
+                            .clipShape(Circle())
                     }
-                    .onChange(of: selectedAvatarIndex) { newValue in
-                        withAnimation(.easeInOut(duration: 0.5)) {
-                            proxy.scrollTo(newValue, anchor: .center)
+                    .opacity(selectedAvatarIndex > 0 ? 1.0 : 0.5)
+                    .disabled(selectedAvatarIndex == 0)
+                    Spacer()
+                    HStack(spacing: 4) {
+                        ForEach(0..<avatars.count, id: \.self) { index in
+                            if index == selectedAvatarIndex {
+                                RoundedRectangle(cornerRadius: 100)
+                                    .fill(Color(red: 116, green: 182, blue: 3))
+                                    .frame(width: 30, height: 5)
+                            } else {
+                                Circle()
+                                    .fill(Color(red: 116, green: 182, blue: 3))
+                                    .frame(width: 5, height: 5)
+                            }
                         }
-                        authManager.saveSelectedAvatar(newValue)
                     }
-                    .onAppear {
-                        selectedAvatarIndex = authManager.selectedAvatarIndex
+                    Spacer()
+                    Button {
+                        if selectedAvatarIndex < avatars.count - 1 {
+                            withAnimation(.easeInOut(duration: 0.3)) {
+                                selectedAvatarIndex += 1
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 18, weight: .medium))
+                            .foregroundColor(.white)
+                            .frame(width: 30, height: 30)
+                            .background(Color(red: 116, green: 182, blue: 3))
+                            .clipShape(Circle())
                     }
-                    
-                    Image(.subtract)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 320, height: 320)
+                    .opacity(selectedAvatarIndex < avatars.count - 1 ? 1.0 : 0.5)
+                    .disabled(selectedAvatarIndex == avatars.count - 1)
                 }
+                .padding(.vertical, 20)
+                .padding(.horizontal, 24)
             }
-            .padding(.top, 40)
-            .padding(.horizontal, -24)
+            .background(.white)
+            .cornerRadius(20)
             
-            HStack {
-                Button {
-                    if selectedAvatarIndex > 0 {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            selectedAvatarIndex -= 1
-                        }
-                    }
-                } label: {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 24, weight: .medium))
-                        .foregroundStyle(Color.init(red: 95, green: 255, blue: 144))
-                        .foregroundColor(.white)
-                        .frame(width: 44, height: 44)
-                        .background(Color.init(red: 95, green: 255, blue: 144, opacit: 0.2))
-                        .clipShape(Circle())
-                }
-                .opacity(selectedAvatarIndex > 0 ? 1.0 : 0.5)
-                .disabled(selectedAvatarIndex == 0)
-                Spacer()
-                HStack(spacing: 4) {
-                    ForEach(0..<avatars.count, id: \.self) { index in
-                        if index == selectedAvatarIndex {
-                            RoundedRectangle(cornerRadius: 100)
-                                .fill(Color.init(red: 95, green: 255, blue: 144))
-                                .frame(width: 30, height: 5)
-                        } else {
-                            Circle()
-                                .fill(Color.init(red: 95, green: 255, blue: 144))
-                                .frame(width: 5, height: 5)
-                        }
-                    }
-                }
-                Spacer()
-                Button {
-                    if selectedAvatarIndex < avatars.count - 1 {
-                        withAnimation(.easeInOut(duration: 0.3)) {
-                            selectedAvatarIndex += 1
-                        }
-                    }
-                } label: {
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 24, weight: .medium))
-                        .foregroundStyle(Color.init(red: 95, green: 255, blue: 144))
-                        .foregroundColor(.white)
-                        .frame(width: 44, height: 44)
-                        .background(Color.init(red: 95, green: 255, blue: 144, opacit: 0.2))
-                        .clipShape(Circle())
-                }
-                .opacity(selectedAvatarIndex < avatars.count - 1 ? 1.0 : 0.5)
-                .disabled(selectedAvatarIndex == avatars.count - 1)
-            }
-            .padding(.top, 20)
-
             Spacer()
             
             Button {
@@ -135,14 +138,11 @@ struct ChooseAvatarsScreen: View {
                 Text("Continue")
                     .frame(maxWidth: .infinity)
                     .font(Font.custom("Inter24pt-ExtraBold", size: 20))
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
             }
             .padding(22)
-            .background(LinearGradient(colors: [
-                Color.init(red: 95, green: 255, blue: 144),
-                Color.init(red: 39, green: 246, blue: 140)
-            ], startPoint: .top, endPoint: .bottom))
-            .cornerRadius(90)
+            .background(Color(red: 0, green: 86, blue: 254))
+            .cornerRadius(14)
         }
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

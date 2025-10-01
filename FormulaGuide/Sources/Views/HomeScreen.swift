@@ -31,11 +31,11 @@ struct HomeScreen: View {
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(userName)
-                        .font(Font.custom("Inter24pt-ExtraBold", size: 18))
+                        .font(.custom("Inter24pt-ExtraBold", size: 18))
                         .foregroundColor(Color.white)
                     
                     Text(currentDate)
-                        .font(Font.custom("Inter24pt-Regular", size: 15))
+                        .font(.custom("Inter24pt-Regular", size: 15))
                         .foregroundColor(Color.white.opacity(0.5))
                 }
                 
@@ -48,7 +48,10 @@ struct HomeScreen: View {
                         .frame(width: 36, height: 36)
                 }
             }
-            .padding(.top, 24)
+            .padding(.horizontal, 24)
+            .padding(.bottom, 10)
+            .background(Color(red: 42, green: 59, blue: 76))
+            .padding(.horizontal, -24)
             
             HStack(spacing: 13) {
                 Button(action: {
@@ -81,7 +84,7 @@ struct HomeScreen: View {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Highlight")
                     .font(Font.custom("Inter24pt-ExtraBold", size: 24))
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color(red: 18, green: 18, blue: 31))
                 
                 GeometryReader { geometry in
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -118,11 +121,11 @@ struct HomeScreen: View {
                     ForEach(1 ... 3, id: \.self) { index in
                         if index == currentHighlightPage {
                             RoundedRectangle(cornerRadius: 100)
-                                .fill(Color.init(red: 95, green: 255, blue: 144))
+                                .fill(Color(red: 116, green: 182, blue: 3))
                                 .frame(width: 30, height: 5)
                         } else {
                             Circle()
-                                .fill(Color.init(red: 95, green: 255, blue: 144))
+                                .fill(Color(red: 116, green: 182, blue: 3))
                                 .frame(width: 5, height: 5)
                         }
                     }

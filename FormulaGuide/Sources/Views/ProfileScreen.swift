@@ -16,7 +16,7 @@ struct ProfileScreen: View {
         VStack(spacing: 24) {
             HStack {
                 Text("Profile")
-                    .font(Font.custom("Inter24pt-Bold", size: 24))
+                    .font(.custom("Inter24pt-Bold", size: 24))
                     .foregroundStyle(.white)
                     .multilineTextAlignment(.center)
                 
@@ -29,7 +29,10 @@ struct ProfileScreen: View {
                         .frame(width: 36, height: 36)
                 }
             }
-            .padding(.top, 24)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 14)
+            .background(Color(red: 42, green: 59, blue: 76))
+            .padding(.horizontal, -24)
             
             VStack(spacing: 16) {
                 Image(authManager.getSelectedAvatarName())
@@ -39,11 +42,11 @@ struct ProfileScreen: View {
                 
                 Text(authManager.currentuser?.name ?? "User")
                     .font(Font.custom("Inter24pt-Bold", size: 24))
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color(red: 18, green: 18, blue: 31))
                 
                 Text(currentDate)
                     .font(Font.custom("Inter24pt-Regular", size: 14))
-                    .foregroundColor(Color.white.opacity(0.5))
+                    .foregroundColor(Color(red: 18, green: 18, blue: 31, opacit: 0.5))
             }
             .padding(.top, 24)
             
@@ -132,10 +135,9 @@ struct ProfileMenuItem: View {
                     .frame(width: 32, height: 32)
             }
             .padding(16)
-            .background((Color.init(red: 18, green: 18, blue: 31)))
-            .cornerRadius(40)
+            .background((Color(red: 18, green: 18, blue: 31)))
+            .cornerRadius(10)
         }
-        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -160,8 +162,7 @@ struct ActionButton: View {
             }
             .padding(16)
             .background((Color.init(red: 18, green: 18, blue: 31)))
-            .cornerRadius(40)
+            .cornerRadius(10)
         }
-        .buttonStyle(PlainButtonStyle())
     }
 }

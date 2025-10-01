@@ -31,11 +31,14 @@ struct NotificationsScreen: View {
                 Color.clear
                     .frame(width: 30, height: 30)
             }
-            .padding(.top, 21)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 14)
+            .background(Color(red: 42, green: 59, blue: 76))
+            .padding(.horizontal, -24)
             
             Text("All updates and notifications in the application will be displayed here. There are currently no entries here.")
                 .font(Font.custom("Inter24pt-Regular", size: 16))
-                .foregroundStyle(.white.opacity(0.5))
+                .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                 .padding(.top, 20)
             
             VStack(spacing: 14) {
@@ -80,15 +83,15 @@ struct NotificationToggleRow: View {
     var body: some View {
         HStack {
             Text(title)
-                .font(Font.custom("Inter24pt-Bold", size: 16))
-                .foregroundColor(Color.white)
+                .font(.custom("Inter24pt-Bold", size: 16))
+                .foregroundStyle(Color(red: 18, green: 18, blue: 31))
             
             Spacer()
             
             Button(action: action) {
                 ZStack {
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(isEnabled ? Color.init(red: 39, green: 246, blue: 140) : Color.init(red: 114, green: 42, blue: 218))
+                        .fill(isEnabled ? Color.init(red: 117, green: 182, blue: 1) : Color.init(red: 211, green: 211, blue: 211))
                         .frame(width: 50, height: 30)
                     
                     Circle()
@@ -102,9 +105,7 @@ struct NotificationToggleRow: View {
             .animation(.easeInOut(duration: 0.2), value: isEnabled)
         }
         .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 40)
-                .fill(Color.init(red: 18, green: 18, blue: 31))
-        )
+        .background(.white)
+        .cornerRadius(10)
     }
 }

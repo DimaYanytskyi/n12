@@ -42,7 +42,10 @@ struct TeamsScreen: View {
                         .frame(width: 36, height: 36)
                 }
             }
-            .padding(.top, 24)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 14)
+            .background(Color(red: 42, green: 59, blue: 76))
+            .padding(.horizontal, -24)
             
             ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 16) {

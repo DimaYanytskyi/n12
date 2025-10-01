@@ -21,22 +21,18 @@ struct ChooseInterestsScreen: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            HStack {
-                Spacer()
-                
-                Text("Choose Interests")
-                    .font(Font.custom("Inter24pt-Bold", size: 24))
-                    .foregroundStyle(.white)
-                    .multilineTextAlignment(.center)
-                
-                Spacer()
-
-            }
-            .padding(.top, 21)
+            Text("Choose Interests")
+                .font(.custom("Inter24pt-Bold", size: 24))
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.center)
+                .padding(.vertical, 20)
+                .background(Color(red: 42, green: 59, blue: 76))
+                .padding(.horizontal, -24)
             
             Text("Select the items that interest you. You can select several items at once.")
-                .font(Font.custom("Inter24pt-Regular", size: 16))
-                .foregroundStyle(.white.opacity(0.5))
+                .font(.custom("Inter24pt-Regular", size: 16))
+                .foregroundStyle(Color(red: 18, green: 18, blue: 31))
                 .multilineTextAlignment(.center)
                 .padding(.top, 20)
             
@@ -58,14 +54,11 @@ struct ChooseInterestsScreen: View {
                 Text("Done")
                     .frame(maxWidth: .infinity)
                     .font(Font.custom("Inter24pt-ExtraBold", size: 20))
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
             }
             .padding(22)
-            .background(LinearGradient(colors: [
-                Color.init(red: 95, green: 255, blue: 144),
-                Color.init(red: 39, green: 246, blue: 140)
-            ], startPoint: .top, endPoint: .bottom))
-            .cornerRadius(90)
+            .background(Color(red: 0, green: 86, blue: 254))
+            .cornerRadius(14)
         }
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -92,13 +85,13 @@ struct InterestCardView: View {
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(
                                 interest.isSelected
-                                ? Color.init(red: 95, green: 255, blue: 144)
+                                ? Color(red: 116, green: 182, blue: 3)
                                 : Color.clear,
                                 lineWidth: interest.isSelected ? 3 : 0
                             )
                     )
                     .shadow(color: interest.isSelected
-                            ? Color.init(red: 95, green: 255, blue: 144, opacit: 0.5)
+                            ? Color(red: 116, green: 182, blue: 3, opacit: 0.5)
                             : Color.clear
                             , radius: 5, x: 0, y: 0
                     )

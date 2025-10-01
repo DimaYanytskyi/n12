@@ -7,58 +7,64 @@ struct FavoritesOnboardingScreen: View {
     var body: some View {
         VStack(spacing: 0) {
             Text("Your Personal Favorites")
-                .font(Font.custom("Inter24pt-Bold", size: 24))
+                .font(.custom("Inter24pt-Bold", size: 24))
+                .frame(maxWidth: .infinity)
                 .foregroundStyle(.white)
                 .multilineTextAlignment(.center)
-                .padding(.top, 21)
+                .padding(.vertical, 20)
+                .background(Color(red: 42, green: 59, blue: 76))
+                .padding(.horizontal, -24)
         
             Text("Create Your Racing Collection")
-            .foregroundStyle(.white)
-            .font(Font.custom("Inter24pt-Regular", size: 16))
-            .multilineTextAlignment(.center)
-            .padding(.top, 20)
+                .font(.custom("Inter24pt-Regular", size: 16))
+                .foregroundStyle(Color(red: 18, green: 18, blue: 31))
+                .multilineTextAlignment(.center)
+                .padding(.top, 20)
             
             Image(.personalFavoritesImg)
                 .resizable()
                 .scaledToFit()
-                .padding(.vertical, 12)
+                .padding(.top, 12)
             
-            HStack(spacing: 4) {
-                ForEach(1...3, id: \.self) { index in
-                    if index == currentPage {
-                        RoundedRectangle(cornerRadius: 100)
-                            .fill(Color.init(red: 95, green: 255, blue: 144))
-                            .frame(width: 30, height: 5)
-                    } else {
-                        Circle()
-                            .fill(Color.init(red: 95, green: 255, blue: 144))
-                            .frame(width: 5, height: 5)
+            VStack {
+                HStack(spacing: 4) {
+                    ForEach(1...3, id: \.self) { index in
+                        if index == currentPage {
+                            RoundedRectangle(cornerRadius: 100)
+                                .fill(Color(red: 116, green: 182, blue: 3))
+                                .frame(width: 30, height: 5)
+                        } else {
+                            Circle()
+                                .fill(Color(red: 116, green: 182, blue: 3))
+                                .frame(width: 5, height: 5)
+                        }
                     }
                 }
-            }
 
-            Text("Save your favorite tracks and teams in one place. Access them quickly whenever you need inspiration. Personalize your experience and build your racing journey.")
-                .font(Font.custom("Inter24pt-Regular", size: 16))
-                .foregroundColor(Color.white)
-                .multilineTextAlignment(.center)
-                .padding(.top, 16)
-            
-            Spacer()
-            
-            Button {
-                onComplete()
-            } label: {
-                Text("Get Started")
-                    .frame(maxWidth: .infinity)
-                    .font(Font.custom("Inter24pt-ExtraBold", size: 20))
-                    .foregroundStyle(.black)
+                Text("Save your favorite tracks and teams in one place. Access them quickly whenever you need inspiration. Personalize your experience and build your racing journey.")
+                    .font(.custom("Inter24pt-Regular", size: 16))
+                    .foregroundStyle(Color(red: 18, green: 18, blue: 31))
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 16)
+                
+                Spacer()
+                
+                Button {
+                    onComplete()
+                } label: {
+                    Text("Get Started")
+                        .frame(maxWidth: .infinity)
+                        .font(.custom("Inter24pt-ExtraBold", size: 20))
+                        .foregroundStyle(.white)
+                }
+                .padding(22)
+                .background(Color(red: 0, green: 86, blue: 254))
+                .cornerRadius(14)
             }
-            .padding(22)
-            .background(LinearGradient(colors: [
-                Color.init(red: 95, green: 255, blue: 144),
-                Color.init(red: 39, green: 246, blue: 140)
-            ], startPoint: .top, endPoint: .bottom))
-            .cornerRadius(90)
+            .padding(10)
+            .background(.white)
+            .cornerRadius(20)
+            .padding(.top, 30)
             .padding(.bottom, 2)
         }
         .padding(.horizontal, 24)

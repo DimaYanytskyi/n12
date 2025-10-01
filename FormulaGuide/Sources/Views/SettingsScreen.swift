@@ -43,21 +43,24 @@ struct SettingsScreen: View {
                         .frame(width: 36, height: 36)
                 }
             }
-            .padding(.top, 21)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 14)
+            .background(Color(red: 42, green: 59, blue: 76))
+            .padding(.horizontal, -24)
             
             VStack(spacing: 14) {
-                ActionButton(title: "Rate App", icon: .arrowCircleRight) {
+                SettingsActionButton(title: "Rate App", icon: .arrowCircleRight) {
                     requestAppReview()
                 }
                 
-                ActionButton(title: "Share with Friends", icon: .arrowCircleRight) {
+                SettingsActionButton(title: "Share with Friends", icon: .arrowCircleRight) {
                     isShareSheetPresented = true
                 }
                 .sheet(isPresented: $isShareSheetPresented) {
                     ShareSheet(items: [URL(string: "https://apps.apple.com/app/id6752661716")!])
                 }
                 
-                ActionButton(title: "Terms of Service", icon: .arrowCircleRight) {
+                SettingsActionButton(title: "Terms of Service", icon: .arrowCircleRight) {
                     isPresentTerm = true
                 }
                 .sheet(isPresented: $isPresentTerm) {
@@ -69,7 +72,7 @@ struct SettingsScreen: View {
                     }
                 }
                 
-                ActionButton(title: "Privacy Policy", icon: .arrowCircleRight) {
+                SettingsActionButton(title: "Privacy Policy", icon: .arrowCircleRight) {
                     isPresentPolicy = true
                 }
                 .sheet(isPresented: $isPresentPolicy) {
@@ -125,4 +128,31 @@ struct ShareSheet: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+
+
+struct SettingsActionButton: View {
+    let title: String
+    let icon: ImageResource
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Text(title)
+                    .font(Font.custom("Inter24pt-Bold", size: 16))
+                    .foregroundColor(Color.init(red: 18, green: 18, blue: 31))
+                
+                Spacer()
+                
+                Image(icon)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 32, height: 32)
+            }
+            .padding(16)
+            .background(.white)
+            .cornerRadius(10)
+        }
+    }
 }

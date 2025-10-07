@@ -134,6 +134,66 @@ struct Team: Identifiable, Codable {
             achievements: "Best Constructors' finish = 5th in 2018.",
             highlights: "The only American F1 team, powered by Ferrari engines, lean structure focusing on efficiency.",
             imageName: "team10"
+        ),
+        Team(
+            name: "Minardi F1 Team",
+            country: "🇮🇹",
+            base: "Faenza, Italy",
+            coordinates: CLLocationCoordinate2D(latitude: 44.2880, longitude: 11.8835),
+            founded: "1985",
+            drivers: ["Fernando Alonso", "Mark Webber", "Giancarlo Fisichella"],
+            car: "Minardi M191",
+            achievements: "Known for competing with minimal budgets and nurturing young talent.",
+            highlights: "Became Toro Rosso (later AlphaTauri / RB); a fan-favorite underdog.",
+            imageName: "team11"
+        ),
+        Team(
+            name: "Ligier F1 Team",
+            country: "🇫🇷",
+            base: "Magny-Cours, France",
+            coordinates: CLLocationCoordinate2D(latitude: 46.8641, longitude: 3.1628),
+            founded: "1976",
+            drivers: ["Jacques Laffite", "Olivier Panis"],
+            car: "Ligier JS5 / JS43",
+            achievements: "9 Grand Prix victories between 1976 and 1996.",
+            highlights: "Classic blue livery and strong national French identity.",
+            imageName: "team12"
+        ),
+        Team(
+            name: "Arrows Grand Prix International",
+            country: "🇬🇧",
+            base: "Milton Keynes, United Kingdom",
+            coordinates: CLLocationCoordinate2D(latitude: 52.0310, longitude: -0.7580),
+            founded: "1977",
+            drivers: ["Riccardo Patrese", "Damon Hill", "Jos Verstappen"],
+            car: "Arrows A18",
+            achievements: "382 races, known for persistence despite no wins.",
+            highlights: "Famous for fighting spirit and creative technical solutions.",
+            imageName: "team13"
+        ),
+        Team(
+            name: "BAR – British American Racing",
+            country: "🇬🇧",
+            base: "Brackley, United Kingdom",
+            coordinates: CLLocationCoordinate2D(latitude: 52.0307, longitude: -1.1405),
+            founded: "1999",
+            drivers: ["Jacques Villeneuve", "Jenson Button"],
+            car: "BAR 006",
+            achievements: "Runner-up in the 2004 Constructors’ Championship.",
+            highlights: "Known for bold branding (dual liveries) and foundation for the modern Mercedes team.",
+            imageName: "team14"
+        ),
+        Team(
+            name: "Toyota F1 Team",
+            country: "🇯🇵",
+            base: "Cologne, Germany (Toyota Motorsport GmbH HQ)",
+            coordinates: CLLocationCoordinate2D(latitude: 50.9393, longitude: 6.9603),
+            founded: "2002",
+            drivers: ["Jarno Trulli", "Ralf Schumacher", "Timo Glock"],
+            car: "Toyota TF109",
+            achievements: "Multiple podium finishes, strong engineering reputation, but no race wins.",
+            highlights: "Massive budget, technically advanced, and respected for its professionalism.",
+            imageName: "team15"
         )
     ]
 }

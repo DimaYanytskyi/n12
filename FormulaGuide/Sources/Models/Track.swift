@@ -123,6 +123,61 @@ struct Track: Identifiable, Codable {
             history: "A permanent fixture in the F1 calendar since 1991.",
             atmosphere: "Local fans strongly support Fernando Alonso and Carlos Sainz.",
             imageName: "track10"
+        ),
+        Track(
+            name: "Shanghai International Circuit",
+            country: "China",
+            opened: "2004",
+            length: "5.451 km",
+            coordinates: CLLocationCoordinate2D(latitude: 31.3389, longitude: 121.2197),
+            highlights: "Unique snail-shaped Turn 1–2, long back straight leading into heavy braking zone.",
+            history: "Hosted the first Chinese GP in 2004; scene of many strategic races.",
+            atmosphere: "Modern venue with vast grandstands and enthusiastic local support.",
+            imageName: "track11"
+        ),
+        Track(
+            name: "Imola (Autodromo Enzo e Dino Ferrari)",
+            country: "Italy",
+            opened: "1953",
+            length: "4.909 km",
+            coordinates: CLLocationCoordinate2D(latitude: 44.3439, longitude: 11.7167),
+            highlights: "Technical chicanes like Variante Alta, flowing rhythm, punishes mistakes.",
+            history: "Historic San Marino GP venue; returned to F1 calendar in the 2020s.",
+            atmosphere: "Passionate Italian fans and old-school circuit character.",
+            imageName: "track12"
+        ),
+        Track(
+            name: "Marina Bay Street Circuit",
+            country: "Singapore",
+            opened: "2008",
+            length: "4.940 km",
+            coordinates: CLLocationCoordinate2D(latitude: 1.2914, longitude: 103.8644),
+            highlights: "Night race, bumpy street surface, many 90-degree corners, high safety car chance.",
+            history: "First ever F1 night race, known for endurance and strategy.",
+            atmosphere: "Glittering skyline backdrop and festival feel in the city.",
+            imageName: "track13"
+        ),
+        Track(
+            name: "Red Bull Ring",
+            country: "Austria",
+            opened: "1969 (modern 2011)",
+            length: "4.318 km",
+            coordinates: CLLocationCoordinate2D(latitude: 47.2197, longitude: 14.7647),
+            highlights: "Short lap, big elevation, heavy braking zones and overtaking opportunities.",
+            history: "Formerly Österreichring/A1-Ring; revived as Red Bull Ring in 2011.",
+            atmosphere: "Beautiful Styrian hills with orange-clad Verstappen fans.",
+            imageName: "track14"
+        ),
+        Track(
+            name: "Circuit Gilles Villeneuve",
+            country: "Canada",
+            opened: "1978",
+            length: "4.361 km",
+            coordinates: CLLocationCoordinate2D(latitude: 45.5006, longitude: -73.5228),
+            highlights: "Long straights, heavy braking chicanes, iconic Wall of Champions.",
+            history: "Named after Canadian legend Gilles Villeneuve; hosts the Canadian GP.",
+            atmosphere: "Party vibe in Montreal with passionate North American crowd.",
+            imageName: "track15"
         )
     ]
 }
